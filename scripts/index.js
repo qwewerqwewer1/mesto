@@ -4,8 +4,8 @@ let popupClose = document.querySelector('.popup__close');
 let popupForm = document.querySelector('.popup__form');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
-let popupInputTitle = document.querySelector('.popup__input-title');
-let popupInputSubtitle = document.querySelector('.popup__input-subtitle');
+let popupInputTitle = document.querySelector('.popup__input_name_title');
+let popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
 
 function openPopup () {
   popup.classList.add('popup__opened');
