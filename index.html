@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Жак-ив Кусто</title>
+  <link rel="stylesheet" href="./vendor/normalize.css">
+  <link rel="stylesheet" href="./pages/index.css">
+</head>
+
+<body class="body">
+  <div class="page">
+    <header class="header">
+      <img src="./images/logo__mesto.svg" alt="Лого" class="header__logo">
+    </header>
+    <main class="main">
+      <section class="profile">
+        <div class="profile__position">
+          <img class="profile__avatar" src="./images/Avatar.jpg" alt="фото-Жак-Ив-Кусто">
+          <div class="profile__info">
+            <div class="profile__info-container">
+              <h1 class="profile__title">Жак-Ив Кусто</h1>
+              <p class="profile__subtitle">Исследователь океана</p>
+            </div>
+            <button class="profile__edit-button">
+              <img src="./images/pointer.svg" alt="ручка-редактор">
+            </button>
+          </div>
+        </div>
+        <button class="profile__add-button">
+          <img alt="Плюс" src="./images/Vector.svg" class="profile__plus">
+        </button>
+      </section>
+      <section class="elements">
+        <div class="element">
+          <img class="element__image" alt="Карачаевск" src="./images/1.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Карачаевск</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" alt="Гора Эльбрус" src="./images/2.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Гора Эльбрус</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" alt="Домбай" src="./images/3.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Домбай</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" alt="Гора Эльбрус" src="./images/2.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Гора Эльбрус</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" alt="Домбай" src="./images/3.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Домбай</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+        <div class="element">
+          <img class="element__image" alt="Карачаевск" src="./images/1.png">
+          <div class="element__data">
+            <h2 class="element__paragraph">Карачаевск</h2>
+            <button class='element__like' src="./images/lukas.svg" alt="лайк"></button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__paragaph">&#169 2020 Mesto Russia </p>
+    </footer>
+  </div>
+  <div id="popup" class="popup">
+    <div class="popup__body">
+      <div class="popup__content">
+        <button type='reset' class="popup__close"><img alt="Плюс" src="./images/Close Icon.svg" class="popup__image"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input name="name" type='text' class="popup__input popup__input-title"></input>
+        <div class="popup__form-border"></div>
+        <input name='profession' type='text' class="popup__input popup__input-subtitle"></input>
+        <div class="popup__form-border"></div>
+        <form name="save_value_popups" class="popup__form">
+          <button type="submit" class='popup__button'>Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="./scripts/index.js"></script>
+</body>
+
+</html>
