@@ -8,13 +8,13 @@ let popupInputTitle = document.querySelector('.popup__input_name_title');
 let popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
 
 function openPopup () {
-  popup.classList.add('popup__opened');
+  popup.classList.add('popup_opened');
   popupInputTitle.value = profileTitle.textContent;
   popupInputSubtitle.value = profileSubtitle.textContent;
 };
 
 function closePopup () {
-  popup.classList.remove('popup__opened');
+  popup.classList.remove('popup_opened');
 };
 
 function saveChanges (evt) {

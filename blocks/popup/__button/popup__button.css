@@ -8,9 +8,9 @@
   font-size: 18px;
   line-height: 22px;
   margin-top: 48px;
-  font-family: inter;
   cursor: pointer;
   border-radius: 2px;
+  font-family: 'Inter' Arial, Helvetica;
 }
 
 .popup__button:focus {

@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Жак-ив Кусто</title>
-  <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./pages/index.css">
 </head>
 
@@ -82,18 +81,14 @@
     </footer>
   </div>
   <div id="popup" class="popup">
-    <div class="popup__body">
       <div class="popup__content">
-        <button type='reset' class="popup__close"><img alt="Плюс" src="./images/Close_ico.svg" class="popup__image"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input name="name" type='text' class="popup__input popup__input_name_title">
-        <div class="popup__form-border"></div>
-        <input name='profession' type='text' class="popup__input popup__input_name_subtitle">
-        <div class="popup__form-border"></div>
-        <form name="save_value_popups" class="popup__form">
+        <form name="save-value-popups" class="popup__form">
+          <button type='reset' class="popup__close"><img alt="Плюс" src="./images/Close_ico.svg" class="popup__image"></button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input name="name" type='text' class="popup__input popup__input_name_title">
+          <input name='profession' type='text' class="popup__input popup__input_name_subtitle">
           <button type="submit" class='popup__button'>Сохранить</button>
         </form>
-      </div>
     </div>
   </div>
   <script src="./scripts/index.js"></script>

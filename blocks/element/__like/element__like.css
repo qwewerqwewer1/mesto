@@ -1,15 +1,16 @@
 .element__like {
-  width: 20px;
+  width: 23px;
   height: 18px;
   align-self: center;
   background-image: url(../../../images/lukas.svg);
   background-repeat: no-repeat;
-  background-size: contain;
   margin-right: 10px;
   margin-left: 10px;
   background-color: transparent;
   border: none;
   outline: none;
+  padding: 10px;
+  cursor: pointer;
 }
 
 @keyframes scale {
