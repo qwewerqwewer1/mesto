@@ -26,10 +26,10 @@ const initialCards = [
 ];
 
 //Переменные Попапов
-let popupProfile = document.querySelector('.popup__profile');
+let popupProfile = document.querySelector('.popup_profile');
 let popupCloseProfile = document.querySelector('.popup__close_profile');
-let popupFormProfile = document.querySelector('.popup__form_profile');
-let popupFormAddCards = document.querySelector('.popup__form_add_cards');
+let popupFormProfile = document.querySelector('.popup_form_profile');
+let popupFormAddCards = document.querySelector('.popup_form_add_cards');
 let popupInputTitle = document.querySelector('.popup__input_name_title');
 let popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
 let editButton = document.querySelector('.profile__edit-button');
@@ -38,7 +38,7 @@ let profileSubtitle = document.querySelector('.profile__subtitle');
 
 //Переменные ПЛЮС кнопок
 let popupButtonPlus = document.querySelector('.profile__add-button');
-let popupPlus = document.querySelector('.popup__plus');
+let popupPlus = document.querySelector('.popup_plus');
 let popupClosePlus = document.querySelector('.popup__close_plus');
 
 const elements = document.querySelector('.elements');
