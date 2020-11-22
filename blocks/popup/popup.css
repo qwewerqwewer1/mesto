@@ -8,4 +8,10 @@
   color: white;
   display: none;
   font-family: 'Inter', sans-serif, helvetica;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .7s, opacity .7s ease-in-out;
 }
