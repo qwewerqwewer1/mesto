@@ -26,31 +26,31 @@ const initialCards = [
 ];
 
 //Переменные Попапов
-let popupProfile = document.querySelector('.popup_profile');
-let popupCloseProfile = document.querySelector('.popup__close_profile');
-let popupFormProfile = document.querySelector('.popup__form-profile');
-let popupFormAddCards = document.querySelector('.popup__form-add');
-let popupInputTitle = document.querySelector('.popup__input_name_title');
-let popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
-let editButton = document.querySelector('.profile__edit-button');
-let profileTitle = document.querySelector('.profile__title');
-let profileSubtitle = document.querySelector('.profile__subtitle');
+const popupProfile = document.querySelector('.popup_profile');
+const popupCloseProfile = document.querySelector('.popup__close_profile');
+const popupFormProfile = document.querySelector('.popup__form-profile');
+const popupFormAddCards = document.querySelector('.popup__form-add');
+const popupInputTitle = document.querySelector('.popup__input_name_title');
+const popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
+const editButton = document.querySelector('.profile__edit-button');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
 
 //Переменные ПЛЮС кнопок
-let popupButtonPlus = document.querySelector('.profile__add-button');
-let popupPlus = document.querySelector('.popup_plus');
-let popupClosePlus = document.querySelector('.popup__close_plus');
+const popupButtonPlus = document.querySelector('.profile__add-button');
+const popupPlus = document.querySelector('.popup_plus');
+const popupClosePlus = document.querySelector('.popup__close_plus');
 
 const elements = document.querySelector('.elements');
 ////Элементы Templ
 const popupButtonSaveCard = document.querySelector('.popup__button_save_card');
 
 //Лайтбокс темы
-let popupLightbox = document.querySelector('.popup_lightbox');
-let lightBoxElement = document.querySelector('.lightbox');
-let lightBoxImage = lightBoxElement.querySelector('.lightbox__image');
-let lightBoxTitle = lightBoxElement.querySelector('.lightbox__title');
-let popupCloseLightbox = document.querySelector('.popup__close_lightbox');
+const popupLightbox = document.querySelector('.popup_lightbox');
+const lightBoxElement = document.querySelector('.lightbox');
+const lightBoxImage = lightBoxElement.querySelector('.lightbox__image');
+const lightBoxTitle = lightBoxElement.querySelector('.lightbox__title');
+const popupCloseLightbox = document.querySelector('.popup__close_lightbox');
 
 //Функция Открытия Профиля Попапа
 function openPopupForm() {
@@ -58,7 +58,6 @@ function openPopupForm() {
   popupInputSubtitle.value = profileSubtitle.textContent;
   openPopup(popupProfile);
 };
-
 
 //Функция Открывающая все попапы
 function openPopup (popup) {
@@ -78,15 +77,6 @@ function saveChangesProfile (evt) {
   closePopup(popupProfile);
 };
 
-//Функция Сохранения карточек АдКардс
-function saveChangesAddCards(evt) {
-  evt.preventDefault();
-  const nameCardTitle = document.querySelector('.popup__input_name_cardtitle');
-  const urlCardTitle = document.querySelector('.popup__input_url_cardtitle');
-  elements.append(createCard({title: nameCardTitle.value, link: urlCardTitle.value}));
-  closePopup(popupPlus);
-};
-
 //Функция Добавления Карточки Template
 function createCard(cardData) {
   const template = document.querySelector('#card').content;
@@ -101,11 +91,25 @@ function createCard(cardData) {
   newCopyCard.querySelector('.element__delete').addEventListener('click', delCard);
   return newCopyCard;
 };
+
+//Функция Сохранения карточек АдКардс
+function saveChangesAddCards(evt) {
+  evt.preventDefault();
+  const nameCardTitle = document.querySelector('.popup__input_name_cardtitle');
+  const urlCardTitle = document.querySelector('.popup__input_url_cardtitle');
+  elements.append(createCard({title: nameCardTitle.value, link: urlCardTitle.value}));
+  closePopup(popupPlus);
+};
+
 //Загрузка первой шестерки через создания карточек
 initialCards.forEach(cardData => {
   const cardElement = createCard(cardData);
   elements.append(cardElement);
 });
+
+function openPopupPlus() {
+  openPopup(popupPlus);
+};
 
 //Функция лайбокса карточки
 function openLightBox(evt) {
@@ -113,15 +117,15 @@ function openLightBox(evt) {
   lightBoxImage.alt = evt.target.alt;
   lightBoxImage.src = evt.target.src;
   openPopup(popupLightbox);
-  };
+};
 //Функция лайка карточки
 function likeElem (evt) {
     evt.target.classList.toggle('element__like_active')
-  };
+};
 //Функция удаления карточки
 function delCard (evt) {
     evt.target.parentElement.remove();
-  };
+};
 
 //События Профильного Попапа
 popupProfile.addEventListener('submit', saveChangesProfile);
@@ -131,4 +135,4 @@ popupButtonSaveCard.addEventListener('click', createCard);
 popupCloseProfile.addEventListener('click', () => {popupProfile.classList.remove('popup_opened')});
 popupClosePlus.addEventListener('click', () => {popupPlus.classList.remove('popup_opened')});
 popupCloseLightbox.addEventListener('click', () => {popupLightbox.classList.remove('popup_opened')});
-popupButtonPlus.addEventListener('click', () => {popupPlus.classList.add('popup_opened')});
+popupButtonPlus.addEventListener('click', openPopupPlus);
