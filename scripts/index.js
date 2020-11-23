@@ -66,7 +66,7 @@ function openPopup (popup) {
 
 //Функция Закрывающая все Попапы
 function closePopup (popup) {
-popup.classList.remove('popup_opened');
+  popup.classList.remove('popup_opened');
 };
 
 //Функция Сохранения Имен Профиля
@@ -111,6 +111,18 @@ function openPopupPlus() {
   openPopup(popupPlus);
 };
 
+function closePopupProfile() {
+  closePopup(popupProfile);
+};
+
+function closePopupPlus() {
+  closePopup(popupPlus);
+};
+
+function closePopupLightbox() {
+  closePopup(popupLightbox);
+};
+
 //Функция лайбокса карточки
 function openLightBox(evt) {
   lightBoxTitle.textContent = evt.target.parentElement.querySelector('.element__paragraph').textContent;
@@ -132,7 +144,7 @@ popupProfile.addEventListener('submit', saveChangesProfile);
 popupFormAddCards.addEventListener('submit', saveChangesAddCards);
 editButton.addEventListener('click', openPopupForm);
 popupButtonSaveCard.addEventListener('click', createCard);
-popupCloseProfile.addEventListener('click', () => {popupProfile.classList.remove('popup_opened')});
-popupClosePlus.addEventListener('click', () => {popupPlus.classList.remove('popup_opened')});
-popupCloseLightbox.addEventListener('click', () => {popupLightbox.classList.remove('popup_opened')});
+popupCloseProfile.addEventListener('click', closePopupProfile);
+popupClosePlus.addEventListener('click', closePopupPlus);
+popupCloseLightbox.addEventListener('click', closePopupLightbox);
 popupButtonPlus.addEventListener('click', openPopupPlus);
