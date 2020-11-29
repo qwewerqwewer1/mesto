@@ -43,8 +43,8 @@ const popupClosePlus = document.querySelector('.popup__close_plus');
 
 const elements = document.querySelector('.elements');
 ////Элементы Templ
-const popupButtonSaveCard = document.querySelector('.popup__button_save_card');
-
+const saveProfileButton = document.querySelector('.popup__button_save_profile');
+const saveCardButton = document.querySelector('.popup__button_save_card');
 //Лайтбокс темы
 const popupLightbox = document.querySelector('.popup_lightbox');
 const lightBoxElement = document.querySelector('.lightbox');
@@ -62,11 +62,13 @@ function openPopupForm() {
 //Функция Открывающая все попапы
 function openPopup (popup) {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', keydownEscape);
 };
 
 //Функция Закрывающая все Попапы
 function closePopup (popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', keydownEscape);
 };
 
 //Функция Сохранения Имен Профиля
@@ -139,12 +141,36 @@ function delCard (evt) {
     evt.target.parentElement.remove();
 };
 
+function closeOverlay(evt) {
+  if (evt.target.classList.contains('popup')){
+    const currentPopup = document.querySelector('.popup_opened');
+    closePopup(currentPopup);
+  }
+}
+
+function keydownEscape(evt) {
+  if(evt.key === "Escape") {
+    closePopupProfile();
+    closePopupPlus();
+    closePopupLightbox();
+  }
+};
+
 //События Профильного Попапа
 popupProfile.addEventListener('submit', saveChangesProfile);
 popupFormAddCards.addEventListener('submit', saveChangesAddCards);
 editButton.addEventListener('click', openPopupForm);
-popupButtonSaveCard.addEventListener('click', createCard);
+saveCardButton.addEventListener('click', createCard);
+popupButtonPlus.addEventListener('click', openPopupPlus);
 popupCloseProfile.addEventListener('click', closePopupProfile);
 popupClosePlus.addEventListener('click', closePopupPlus);
 popupCloseLightbox.addEventListener('click', closePopupLightbox);
-popupButtonPlus.addEventListener('click', openPopupPlus);
+//Закрытия НЕ по крестику
+popupProfile.addEventListener('click', closeOverlay);
+popupPlus.addEventListener('click', closeOverlay);
+popupLightbox.addEventListener('click', closeOverlay);
+//Слушатель EscapeOFF
+popupProfile.addEventListener('keydown', keydownEscape);
+popupPlus.addEventListener('keydown', keydownEscape);
+popupLightbox.addEventListener('keydown', keydownEscape);
+//=============================================================================================================VI PROJECT==========================//
