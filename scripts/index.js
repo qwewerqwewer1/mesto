@@ -1,30 +1,3 @@
-const initialCards = [
-  {
-      title: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-      title: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-      title: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-      title: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-      title: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-      title: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
 //Переменные Попапов
 const popupProfile = document.querySelector('.popup_profile');
 const popupCloseProfile = document.querySelector('.popup__close_profile');
@@ -40,17 +13,24 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const popupButtonPlus = document.querySelector('.profile__add-button');
 const popupPlus = document.querySelector('.popup_plus');
 const popupClosePlus = document.querySelector('.popup__close_plus');
-
 const elements = document.querySelector('.elements');
+const nameCardTitle = document.querySelector('.popup__input_name_cardtitle');
+const urlCardTitle = document.querySelector('.popup__input_url_cardtitle');
+
 ////Элементы Templ
+const template = document.querySelector('#card').content;
 const saveProfileButton = document.querySelector('.popup__button_save_profile');
 const saveCardButton = document.querySelector('.popup__button_save_card');
+
 //Лайтбокс темы
 const popupLightbox = document.querySelector('.popup_lightbox');
 const lightBoxElement = document.querySelector('.lightbox');
 const lightBoxImage = lightBoxElement.querySelector('.lightbox__image');
 const lightBoxTitle = lightBoxElement.querySelector('.lightbox__title');
 const popupCloseLightbox = document.querySelector('.popup__close_lightbox');
+
+//ESCAPEs
+const ESC_KEY = "Escape";
 
 //Функция Открытия Профиля Попапа
 function openPopupForm() {
@@ -73,7 +53,6 @@ function closePopup (popup) {
 
 //Функция Сохранения Имен Профиля
 function saveChangesProfile (evt) {
-  evt.preventDefault();
   profileTitle.textContent = popupInputTitle.value;
   profileSubtitle.textContent = popupInputSubtitle.value;
   closePopup(popupProfile);
@@ -81,13 +60,11 @@ function saveChangesProfile (evt) {
 
 //Функция Добавления Карточки Template
 function createCard(cardData) {
-  const template = document.querySelector('#card').content;
   const newCopyCard = template.cloneNode(true);
   const сardImage = newCopyCard.querySelector('.element__image');
   сardImage.src = cardData.link;
   сardImage.alt = cardData.title;
   сardImage.addEventListener('click', openLightBox);
-//Наполняем карточки
   newCopyCard.querySelector('.element__paragraph').textContent = cardData.title;
   newCopyCard.querySelector('.element__like').addEventListener('click', likeElem);
   newCopyCard.querySelector('.element__delete').addEventListener('click', delCard);
@@ -96,18 +73,11 @@ function createCard(cardData) {
 
 //Функция Сохранения карточек АдКардс
 function saveChangesAddCards(evt) {
-  evt.preventDefault();
-  const nameCardTitle = document.querySelector('.popup__input_name_cardtitle');
-  const urlCardTitle = document.querySelector('.popup__input_url_cardtitle');
-  elements.append(createCard({title: nameCardTitle.value, link: urlCardTitle.value}));
+  elements.prepend(createCard({title: nameCardTitle.value, link: urlCardTitle.value}));
   closePopup(popupPlus);
+  popupFormAddCards.reset()
+  setButtonState(saveCardButton, false, validationConfig);
 };
-
-//Загрузка первой шестерки через создания карточек
-initialCards.forEach(cardData => {
-  const cardElement = createCard(cardData);
-  elements.append(cardElement);
-});
 
 function openPopupPlus() {
   openPopup(popupPlus);
@@ -132,10 +102,12 @@ function openLightBox(evt) {
   lightBoxImage.src = evt.target.src;
   openPopup(popupLightbox);
 };
+
 //Функция лайка карточки
 function likeElem (evt) {
     evt.target.classList.toggle('element__like_active')
 };
+
 //Функция удаления карточки
 function delCard (evt) {
     evt.target.parentElement.remove();
@@ -143,16 +115,14 @@ function delCard (evt) {
 
 function closeOverlay(evt) {
   if (evt.target.classList.contains('popup')){
-    const currentPopup = document.querySelector('.popup_opened');
-    closePopup(currentPopup);
+    closePopup(evt.target);
   }
 }
 
 function keydownEscape(evt) {
-  if(evt.key === "Escape") {
-    closePopupProfile();
-    closePopupPlus();
-    closePopupLightbox();
+  if (evt.key === ESC_KEY) {
+    const currentPopup = document.querySelector('.popup_opened');
+    closePopup(currentPopup);
   }
 };
 
@@ -173,4 +143,3 @@ popupLightbox.addEventListener('click', closeOverlay);
 popupProfile.addEventListener('keydown', keydownEscape);
 popupPlus.addEventListener('keydown', keydownEscape);
 popupLightbox.addEventListener('keydown', keydownEscape);
-//=============================================================================================================VI PROJECT==========================//
