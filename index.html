@@ -1,97 +1,161 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Жак-ив Кусто</title>
+    <link rel="stylesheet" href="./pages/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Жак-ив Кусто</title>
-  <link rel="stylesheet" href="./pages/index.css">
-</head>
-
-<body class="body">
-  <div class="page">
-    <header class="header">
-      <img src="./images/logo__mesto.svg" alt="Лого" class="header__logo">
-    </header>
-    <main class="main">
-      <section class="profile">
-        <div class="profile__position">
-          <img class="profile__avatar" src="./images/Avatar.jpg" alt="фото-Жак-Ив-Кусто">
-          <div class="profile__info">
-            <div class="profile__info-container">
-              <h1 class="profile__title">Жак-Ив Кусто</h1>
-              <p class="profile__subtitle">Исследователь океана</p>
+  <body class="body">
+    <div class="page">
+      <header class="header">
+        <img src="./images/logo__mesto.svg" alt="Лого" class="header__logo" />
+      </header>
+      <main class="main">
+        <section class="profile">
+          <div class="profile__position">
+            <img
+              class="profile__avatar"
+              src="./images/Avatar.jpg"
+              alt="фото-Жак-Ив-Кусто"
+            />
+            <div class="profile__info">
+              <div class="profile__info-container">
+                <h1 class="profile__title">Жак-Ив Кусто</h1>
+                <p class="profile__subtitle">Исследователь океана</p>
+              </div>
+              <button type="button" class="profile__edit-button">
+                <img src="./images/pointer.svg" alt="ручка-редактор" />
+              </button>
             </div>
-            <button type="button" class="profile__edit-button">
-              <img src="./images/pointer.svg" alt="ручка-редактор">
-            </button>
           </div>
-        </div>
-        <button type="button" class="profile__add-button">
-          <img alt="Плюс" src="./images/Vector.svg" class="profile__plus">
-        </button>
-      </section>
-      <section class="elements">
-      </section>
-    </main>
-    <footer class="footer">
-      <p class="footer__paragaph">&#169; 2020 Mesto Russia </p>
-    </footer>
-  </div>
-  <!-----------------------------ФОРМА ПРОФИЛЬНОГО ПОПАПА---------------------------->
-  <div class="popup popup_profile">
-    <div class="popup__content">
-      <form name="formChangeProfile" class="popup__form popup__form-profile">
-        <button type='reset' class="popup__close popup__close_profile"><img alt="Плюс" src="./images/Close_ico.svg" class="popup__image"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input id="popup__form-profile_title" name="profileName" placeholder="Имя" type='text' minlength="2" maxlength="40" class="popup__input popup__input_name_title" required>
-        <span id="profileNameError" class="popup__span popup__form-profile_title-error"></span>
-        <input id="popup__form-profile_subtitle" name='profileProfession' placeholder="О себе" type='text' minlength="2" maxlength="200" class="popup__input popup__input_name_subtitle" required>
-        <span id="profileProfessionError" class="popup__span popup__form-profile_subtitle-error"></span>
-        <button type="submit" class='popup__button popup__button_save_profile' disabled>Сохранить</button>
-      </form>
+          <button type="button" class="profile__add-button">
+            <img alt="Плюс" src="./images/Vector.svg" class="profile__plus" />
+          </button>
+        </section>
+        <section class="elements"></section>
+      </main>
+      <footer class="footer">
+        <p class="footer__paragaph">&#169; 2020 Mesto Russia</p>
+        <p class="footer__paragaph">by Dmitriy Kovyazin</p>
+      </footer>
     </div>
-  </div>
-  <!-----------------------------ФОРМА ПЛЮС ПОПАПА----------------------------------->
-  <div id="popup" class="popup popup_plus">
-    <div class="popup__content">
-      <form name="formAddCards" class="popup__form popup__form-add">
-        <button type='reset' class="popup__close popup__close_plus"><img alt="Плюс" src="./images/Close_ico.svg" class="popup__image"></button>
-        <h2 class="popup__title">Новое место</h2>
-        <input id="popup__form-add_title" name="addCardName" type='text' minlength="2" maxlength="30" placeholder="Название" class="popup__input popup__input_name_cardtitle" required>
-        <span id="addCardNameError" class="popup__span popup__form-add_title-error"></span>
-        <input id="popup__form-add_url" name="addCardUrl" type='url' placeholder="Ссылка на картинку" class="popup__input popup__input_url_cardtitle" required>
-        <span id="addCardUrlError" class="popup__span popup__form-add_url-error"></span>
-        <button type="submit" class='popup__button popup__button_save_card' disabled>Добавить</button>
-      </form>
-    </div>
-  </div>
-  <!-----------------------------LIGHTBOXING------------------------------------------->
-  <div class="popup popup_lightbox">
-    <div class="popup__container popup__container_lightbox">
-      <figure class="lightbox">
-        <img alt="#" src="#" class="lightbox__image">
-        <figcaption class="lightbox__title"></figcaption>
-      </figure>
-      <button class="popup__close popup__close_lightbox" type="button">
-        <img alt="Плюс" src="./images/Close_ico.svg" class="popup__image">
-      </button>
-    </div>
-  </div>
-  <!-----------------------------ТЕМПЛЕЙТ---------------------------------------------->
-  <template id="card">
-    <div class="element">
-      <button type="button" class="element__delete"></button>
-      <img class="element__image" alt="#" src="#">
-      <div class="element__data">
-        <h2 class="element__paragraph"></h2>
-        <button type="button" class='element__like'></button>
+    <!-----------------------------ФОРМА ПРОФИЛЬНОГО ПОПАПА---------------------------->
+    <div class="popup popup_profile">
+      <div class="popup__content">
+        <form name="formChangeProfile" class="popup__form popup__form-profile">
+          <button type="reset" class="popup__close popup__close_profile">
+            <img alt="Плюс" src="./images/Close_ico.svg" class="popup__image" />
+          </button>
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input
+            id="popup__form-profile_title"
+            name="profileName"
+            placeholder="Имя"
+            type="text"
+            minlength="2"
+            maxlength="40"
+            class="popup__input popup__input_name_title"
+            required
+          />
+          <span
+            id="profileNameError"
+            class="popup__span popup__form-profile_title-error"
+          ></span>
+          <input
+            id="popup__form-profile_subtitle"
+            name="profileProfession"
+            placeholder="О себе"
+            type="text"
+            minlength="2"
+            maxlength="200"
+            class="popup__input popup__input_name_subtitle"
+            required
+          />
+          <span
+            id="profileProfessionError"
+            class="popup__span popup__form-profile_subtitle-error"
+          ></span>
+          <button
+            type="submit"
+            class="popup__button popup__button_save_profile"
+            disabled
+          >
+            Сохранить
+          </button>
+        </form>
       </div>
     </div>
-  </template>
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/validate.js"></script>
-  <script src="./scripts/initial-сards.js"></script>
-</body>
-
+    <!-----------------------------ФОРМА ПЛЮС ПОПАПА----------------------------------->
+    <div id="popup" class="popup popup_plus">
+      <div class="popup__content">
+        <form name="formAddCards" class="popup__form popup__form-add">
+          <button type="reset" class="popup__close popup__close_plus">
+            <img alt="Плюс" src="./images/Close_ico.svg" class="popup__image" />
+          </button>
+          <h2 class="popup__title">Новое место</h2>
+          <input
+            id="popup__form-add_title"
+            name="addCardName"
+            type="text"
+            minlength="2"
+            maxlength="30"
+            placeholder="Название"
+            class="popup__input popup__input_name_cardtitle"
+            required
+          />
+          <span
+            id="addCardNameError"
+            class="popup__span popup__form-add_title-error"
+          ></span>
+          <input
+            id="popup__form-add_url"
+            name="addCardUrl"
+            type="url"
+            placeholder="Ссылка на картинку"
+            class="popup__input popup__input_url_cardtitle"
+            required
+          />
+          <span
+            id="addCardUrlError"
+            class="popup__span popup__form-add_url-error"
+          ></span>
+          <button
+            type="submit"
+            class="popup__button popup__button_save_card"
+            disabled
+          >
+            Добавить
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-----------------------------LIGHTBOXING------------------------------------------->
+    <div class="popup popup_lightbox">
+      <div class="popup__container popup__container_lightbox">
+        <figure class="lightbox">
+          <img alt="#" src="#" class="lightbox__image" />
+          <figcaption class="lightbox__title"></figcaption>
+        </figure>
+        <button class="popup__close popup__close_lightbox" type="button">
+          <img alt="Плюс" src="./images/Close_ico.svg" class="popup__image" />
+        </button>
+      </div>
+    </div>
+    <!-----------------------------ТЕМПЛЕЙТ---------------------------------------------->
+    <template id="card">
+      <div class="element">
+        <button type="button" class="element__delete"></button>
+        <img class="element__image" alt="#" src="#" />
+        <div class="element__data">
+          <h2 class="element__paragraph"></h2>
+          <button type="button" class="element__like"></button>
+        </div>
+      </div>
+    </template>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
+    <script src="./scripts/initial-сards.js"></script>
+  </body>
 </html>
