@@ -1,7 +1,9 @@
-import { initialCards, popupFormProfile } from './initial-сards.js'
 import { Card } from './Card.js'
+import { openPopup, closePopup, closeOverlay } from './utils.js';
 import { FormValidator } from './FormValidator.js';
 import {
+  initialCards,
+  popupFormProfile,
   popupProfile,
   popupCloseProfile,
   popupFormAddCards,
@@ -11,7 +13,7 @@ import {
   profileTitle,
   profileSubtitle,
   popupButtonPlus,
-  popupPlus,
+  popupAddCards,
   popupClosePlus,
   elements,
   nameCardTitle,
@@ -20,10 +22,7 @@ import {
   popupLightbox,
   popupCloseLightbox,
   settings,
-} from './initial-сards.js';
-
-//ESCAPEs
-const ESC_KEY = "Escape";
+} from './constants.js';
 
 //Функция Открытия Профиля Попапа
 function openPopupForm() {
@@ -33,27 +32,25 @@ function openPopupForm() {
   openPopup(popupProfile);
 };
 
-//Функция Открывающая все попапы
-export function openPopup(popup) {
-  popup.classList.add('popup_opened');
-  document.addEventListener('keydown', keydownEscape);
-};
-
-//Функция Закрывающая все Попапы
-export function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', keydownEscape);
+//Функция Открытия Добавления Карточек Попапа
+function openPopupAddCards() {
+  formAddCardsValidator.resetValidationState()
+  openPopup(popupAddCards);
 };
 
 //Функция Сохранения Имен Профиля
-function saveChangesProfile(evt) {
+function saveChangesProfile() {
   profileTitle.textContent = popupInputTitle.value;
   profileSubtitle.textContent = popupInputSubtitle.value;
   closePopup(popupProfile);
 };
 
+function createCard(arr) {
+  return new Card(arr, '#card')
+}
+
 initialCards.forEach((arg) => {
-  const formCard = new Card(arg, '#card');
+  const formCard = createCard(arg)
   const cardElement = formCard.generateCard();
   elements.append(cardElement);
 });
@@ -66,41 +63,23 @@ formAddCardsValidator.enableValidation();
 
 //Функция Сохранения карточек АдКардс
 function saveChangesAddCards() {
-  const card = new Card({ title: nameCardTitle.value, link: urlCardTitle.value }, '#card');
+  const card = createCard({ title: nameCardTitle.value, link: urlCardTitle.value })
   const cardElement = card.generateCard();
   elements.prepend(cardElement);
   popupFormAddCards.reset();
-  closePopup(popupPlus);
-};
-
-function openPopupPlus() {
-  formAddCardsValidator.resetValidationState()
-  openPopup(popupPlus);
+  closePopup(popupAddCards);
 };
 
 function closePopupProfile() {
   closePopup(popupProfile);
 };
 
-function closePopupPlus() {
-  closePopup(popupPlus);
+function closePopupAddCards() {
+  closePopup(popupAddCards);
 };
 
 function closePopupLightbox() {
   closePopup(popupLightbox);
-};
-
-function closeOverlay(evt) {
-  if (evt.target.classList.contains('popup')) {
-    closePopup(evt.target);
-  }
-}
-
-function keydownEscape(evt) {
-  if (evt.key === ESC_KEY) {
-    const currentPopup = document.querySelector('.popup_opened');
-    closePopup(currentPopup);
-  }
 };
 
 //События Профильного Попапа
@@ -108,15 +87,7 @@ popupProfile.addEventListener('submit', saveChangesProfile);
 popupFormAddCards.addEventListener('submit', saveChangesAddCards);
 editButton.addEventListener('click', openPopupForm);
 saveCardButton.addEventListener('click', Card);
-popupButtonPlus.addEventListener('click', openPopupPlus);
+popupButtonPlus.addEventListener('click', openPopupAddCards);
 popupCloseProfile.addEventListener('click', closePopupProfile);
-popupClosePlus.addEventListener('click', closePopupPlus);
+popupClosePlus.addEventListener('click', closePopupAddCards);
 popupCloseLightbox.addEventListener('click', closePopupLightbox);
-//Закрытия НЕ по крестику
-popupProfile.addEventListener('click', closeOverlay);
-popupPlus.addEventListener('click', closeOverlay);
-popupLightbox.addEventListener('click', closeOverlay);
-//Слушатель EscapeOFF
-popupProfile.addEventListener('keydown', keydownEscape);
-popupPlus.addEventListener('keydown', keydownEscape);
-popupLightbox.addEventListener('keydown', keydownEscape);

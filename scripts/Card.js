@@ -1,5 +1,5 @@
-import { lightBoxTitle, lightBoxImage, popupLightbox } from './initial-сards.js';
-import { openPopup } from './index.js';
+import { lightBoxTitle, lightBoxImage, popupLightbox } from './constants.js';
+import { openPopup } from './utils.js';
 //Создаем конструктор будущих карт
 export class Card {
   constructor(data, cardContainer) {

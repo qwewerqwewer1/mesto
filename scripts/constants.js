@@ -38,7 +38,7 @@ export const profileSubtitle = document.querySelector('.profile__subtitle');
 
 //Переменные ПЛЮС кнопок
 export const popupButtonPlus = document.querySelector('.profile__add-button');
-export const popupPlus = document.querySelector('.popup_plus');
+export const popupAddCards = document.querySelector('.popup_plus');
 export const popupClosePlus = document.querySelector('.popup__close_plus');
 export const elements = document.querySelector('.elements');
 export const nameCardTitle = document.querySelector('.popup__input_name_cardtitle');
