@@ -1,0 +1,10 @@
+.profile__position {
+  display: flex;
+}
+
+@media screen and (max-width: 582px) {
+   
+  .profile__position {
+    display: block;
+  }
+}

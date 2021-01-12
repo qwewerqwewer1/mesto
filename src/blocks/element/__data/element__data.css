@@ -1,0 +1,4 @@
+.element__data {
+  display: flex;
+  justify-content: space-between;
+}
