@@ -41,13 +41,13 @@ function openPopupForm() {
 
 //Функция Открывающая все попапы
 function openPopup(popup) {
-  popup.classList.add('popup_opened');
+  popup.classList.add('popup__opened');
   document.addEventListener('keydown', keydownEscape);
 };
 
 //Функция Закрывающая все Попапы
 function closePopup(popup) {
-  popup.classList.remove('popup_opened');
+  popup.classList.remove('popup__opened');
   document.removeEventListener('keydown', keydownEscape);
 };
 
@@ -126,7 +126,7 @@ function closeOverlay(evt) {
 
 function keydownEscape(evt) {
   if (evt.key === ESC_KEY) {
-    const currentPopup = document.querySelector('.popup_opened');
+    const currentPopup = document.querySelector('.popup__opened');
     closePopup(currentPopup);
   }
 };

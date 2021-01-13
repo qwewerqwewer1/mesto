@@ -11,18 +11,18 @@ export class Popup {
   }
 
   _handleClickOverlay(evt) {
-    if (evt.target.classList.contains('popup_opened')) {
+    if (evt.target.classList.contains('popup__opened')) {
       this.close();
     }
   }
 
   open() {
-    this._popup.classList.add('popup_opened');
+    this._popup.classList.add('popup__opened');
     document.addEventListener('keydown', this._handleEscClose);
   }
 
   close() {
-    this._popup.classList.remove('popup_opened');
+    this._popup.classList.remove('popup__opened');
     document.removeEventListener('keydown', this._handleEscClose);
   }
 
