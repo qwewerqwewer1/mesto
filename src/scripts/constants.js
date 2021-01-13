@@ -37,6 +37,7 @@ export const elements = document.querySelector('.elements');
 export const editButton = document.querySelector('.profile__edit-button');
 export const popupFormProfile = document.querySelector('.popup__form-profile');
 export const popupFormAddCards = document.querySelector('.popup__form-add');
+
 export const popupInputTitle = document.querySelector('.popup__input_name_title');
 export const popupInputSubtitle = document.querySelector('.popup__input_name_subtitle');
 export const popupButtonPlus = document.querySelector('.profile__add-button');
