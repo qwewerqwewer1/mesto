@@ -102,7 +102,7 @@ function createCard(cardItem) {
   return card.generateCard();
 }
 
-const avatarPopup = new PopupWithForm('.popup__photo', (evt, fields) => {
+const avatarPopup = new PopupWithForm('.popup_photo', (evt, fields) => {
   evt.preventDefault()
   avatarPopup.renderLoading(true);
   api.setAvatar(fields['inputPhoto'])
@@ -120,7 +120,7 @@ const avatarPopup = new PopupWithForm('.popup__photo', (evt, fields) => {
 avatarPopup.setEventListeners();
 
 
-const deleteCardPopup = new PopupDeleteCard('.popup__delete-card', (evt, card) => {
+const deleteCardPopup = new PopupDeleteCard('.popup_delete-card', (evt, card) => {
   evt.preventDefault();
   api.delCard(card.id)
     .then(() => {
