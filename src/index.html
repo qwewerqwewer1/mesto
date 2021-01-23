@@ -13,16 +13,12 @@
           src="<%=require('./images/logo__mesto.svg')%>"
           alt="Лого"
           class="header__logo"
-        />
+        /><!--<%=require('./images/image.jpg')%>-->
       </header>
       <main class="main">
         <section class="profile">
           <div class="profile__position">
-            <img
-              class="profile__avatar"
-              src="<%=require('./images/image.jpg')%>"
-              alt="фото-Жак-Ив-Кусто"
-            />
+            <div class="profile__avatar"></div>
             <div class="profile__info">
               <div class="profile__info-container">
                 <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -144,7 +140,60 @@
             class="popup__button popup__button_save_card"
             disabled
           >
-            Добавить
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-----------------------------Форма Редактирования Аватарки------------------------->
+    <div id="popup" class="popup popup__photo">
+      <div class="popup__content">
+        <form name="formPhoto" class="popup__form popup__form-photo">
+          <button type="reset" class="popup__close popup__close_photo">
+            <img
+              alt="Плюс"
+              src="<%=require('./images/Close_ico.svg')%>"
+              class="popup__image"
+            />
+          </button>
+          <h2 class="popup__title">Обновить аватар</h2>
+          <input
+            id="popup__span_photo-url"
+            name="inputPhoto"
+            type="url"
+            minlength="2"
+            placeholder="URL"
+            class="popup__input popup__input_url_photo"
+            required
+          />
+          <span
+            id="avatar-link"
+            class="popup__span popup__span_photo-url-error"
+          ></span>
+          <button
+            type="submit"
+            class="popup__button popup__button_save_photo"
+            disabled
+          >
+            Сохранить
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-----------------------------Форма Удаления Карточки------------------------->
+    <div id="popup" class="popup popup__delete-card">
+      <div class="popup__content">
+        <form name="deleteCard" class="popup__form popup__form-delete-card">
+          <button type="reset" class="popup__close popup__close_delete-card">
+            <img
+              alt="Плюс"
+              src="<%=require('./images/Close_ico.svg')%>"
+              class="popup__image"
+            />
+          </button>
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button type="submit" class="popup__button popup__button_delete_card">
+            Да
           </button>
         </form>
       </div>
@@ -168,11 +217,17 @@
     <!-----------------------------ТЕМПЛЕЙТ---------------------------------------------->
     <template id="card">
       <div class="element">
-        <button type="button" class="element__delete"></button>
+        <button
+          type="button"
+          class="element__delete element__delete_active"
+        ></button>
         <img class="element__image" alt="#" src="#" />
         <div class="element__data">
           <h2 class="element__paragraph"></h2>
-          <button type="button" class="element__like"></button>
+          <div class="element__likes">
+            <button type="button" class="element__like"></button>
+            <span class="element__likes-users">1</span>
+          </div>
         </div>
       </div>
     </template>

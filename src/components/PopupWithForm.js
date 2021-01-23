@@ -27,4 +27,12 @@ export class PopupWithForm extends Popup {
     this._form.reset()
     super.close()
   }
+
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._form.querySelector('.popup__button').innerText = 'Сохранение...';
+    } else {
+      this._form.querySelector('.popup__button').innerText = 'Сохранить'
+    }
+  }
 }
