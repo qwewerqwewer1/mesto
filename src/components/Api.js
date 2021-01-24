@@ -5,6 +5,13 @@ export class Api {
     this._groupId = groupId;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка ${res.status}`);
+  }
+
   //GET
   _get(url) {
     return fetch(url, {
@@ -12,18 +19,9 @@ export class Api {
         authorization: this._token
       }
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
-
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._checkResponse)
   }
+
   //PATCH
   _patch(url, body) {
     return fetch(url, {
@@ -34,19 +32,9 @@ export class Api {
       },
       body
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
-
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
-
+      .then(this._checkResponse)
   }
+
   //POST
   _post(url, body) {
     return fetch(url, {
@@ -57,18 +45,9 @@ export class Api {
       },
       body
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
-
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._checkResponse)
   }
+
   //PUT
   _put(url) {
     return fetch(url, {
@@ -78,17 +57,7 @@ export class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
-
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._checkResponse)
   }
 
   _delete(url) {
@@ -99,17 +68,7 @@ export class Api {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => {
-        if (response.ok) {
-          return response.json()
-        }
-
-        return Promise.reject(`Ошибка ${response.status}`)
-      })
-
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
+      .then(this._checkResponse)
   }
 
 

@@ -38,7 +38,6 @@ function openPlaceAddForm() {
   addPlacePopup.open();
 }
 
-
 function openPopupAddPhoto() {
   popupPhotoFormValidation.resetValidationState();
   avatarPopup.open();
@@ -65,19 +64,9 @@ const editProfilePopup = new PopupWithForm('.popup_profile', (evt, fields) => {
 // Функция создания карточки
 function createCard(cardItem) {
   const myId = userInfo.getUserInfo().id
-  let isLikedApi = false
-  cardItem.likes.forEach((obj) => {
-    if (obj._id === myId) {
-      isLikedApi = true
-    }
-  })
-
-  const isOwner = cardItem.owner._id === myId
-
   const card = new Card({
     data: cardItem,
-    isLiked: isLikedApi,
-    isOwner: isOwner,
+    userId: myId,
     handleRemoveButtonClick: (card) => {
       deleteCardPopup.open(card);
     },
@@ -89,11 +78,17 @@ function createCard(cardItem) {
             card.setLikes(res.likes.length)
             card.changeStatus()
           })
+          .catch((err) => {
+            console.log(err);
+          })
       } else {
         api.delLike(card.id)
           .then(res => {
             card.setLikes(res.likes.length)
             card.changeStatus()
+          })
+          .catch((err) => {
+            console.log(err);
           })
       }
     }
@@ -196,11 +191,15 @@ api.getUserInfo()
     userInfo.setUserInfo(resApi.name, resApi.about, resApi._id)
     userInfo.setUserAvatar(resApi.avatar)
   })
+  .catch((err) => {
+    console.log(err);
+  })
 
 //                                                 2. Загрузка карточек с сервера
 api.getCards()
-
   .then(res => {
     cardList.renderItems(res);
   })
-//                                                 3. Слушатель лайка карточки
+  .catch((err) => {
+    console.log(err);
+  })
