@@ -14,6 +14,7 @@
 - [Ссылка на проект](https://qwewerqwewer1.github.io/mesto/)
 
 **Применил знания**
+
 1.Базовый синтаксис языка JavaScript
 
 2.Работу с DOM
